@@ -20,12 +20,17 @@ func main() {
 	fmt.Println("应用监听端口:",port)
 	beego.Run()
 
-	drive:=config.String("db_driver")
+	driver:=config.String("db_driver")
 	dbUser:=config.String("db_user")
 	dbPassword:=config.String("db_password")
 	dbIP:=config.String("db_ip")
 	dbName:=config.String("db_name")
-    db,err:=sql.Open()
+	db, err :=sql.Open(driver,dbUser+":"+dbPassword+"@tcp("+dbIP+")/"+dbName+"?charset=utf8")
+	if err != nil {
+		panic("数据连接打开失败，请重试")
+	}
+	fmt.Println(db)
+	beego.Run()
 
 }
 

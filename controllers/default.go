@@ -32,7 +32,7 @@ func (c *MainController) Post(){
 		c.Ctx.WriteString("数据解析失败，请重试")
 		return
 	}
-	fmt.Println("用户名：",person.User,"，地址：",person.Address)
+	fmt.Println("用户名：",person.User,"，生日：",person.Birthday,"地址:",person.Address)
 	c.Ctx.WriteString("用户名是:"+person.User)
 
 }
